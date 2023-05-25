@@ -15,7 +15,7 @@ gcd_calc gcd_calc_inst(
 .done(t_done)
 );
 
-always #10 t_clk = ~t_clk;
+always #5 t_clk = ~t_clk;
 
 initial begin
     t_clk = 0;
@@ -26,10 +26,10 @@ initial begin
 end
 
 initial begin
-    #10 t_rst = 0;
-    #10 t_rst = 1;
+    #5 t_rst = 0;
+    #5 t_rst = 1;
 
-    #10 t_P = 8'b00000110;
+    #5 t_P = 8'b00000110;
         t_Q = 8'b00000100;
         t_start = 1;
 

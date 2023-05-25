@@ -4,20 +4,20 @@ module gcd_calc(
     output reg [7:0] R,
     output reg done
 );
+
+reg [7:0] p, q, r;
+reg [2:0] s;
+
 parameter
-        p = 8'b00000000,
-        q = 8'b00000000,
         S0 = 3'b000,
         S1 = 3'b001,
         S2 = 3'b010,
         S3 = 3'b011,
-        S4 = 3'b100,
-        s = S0,
-        r = 8'b00011000;
+        S4 = 3'b100;
 
 always @ (posedge clk, negedge rst)
     if (!rst) begin
-        R <= 0;
+        R = 0;
         done <= 0;
         s <= S0;
     end
@@ -32,7 +32,7 @@ always @ (posedge clk, negedge rst)
             end
             S1: begin
                 if (p == q) s <= S4;
-                else if (p > q) s <= S2;
+                else if (q > p) s <= S2;
                 else s <= S3;
             end
             S2: begin
@@ -45,12 +45,14 @@ always @ (posedge clk, negedge rst)
                 s <= S1;
             end
             S4: begin
-                R <= p;
+                r <= p;
                 done <= 1;
                 if (!start) s <= S0;
             end
             default: s <= S0;
         endcase
     end
+
+assign R = r;
 
 endmodule
