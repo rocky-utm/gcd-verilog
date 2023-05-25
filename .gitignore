@@ -1,0 +1,8 @@
+.idea
+obj_dir
+cmake-build-debug
+cmake-build
+CMakeFiles
+CmakeCache.txt
+waveform.vcd
+cmake_install.cmake
