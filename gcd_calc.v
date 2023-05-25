@@ -26,7 +26,7 @@ always @ (posedge clk, negedge rst)
             S0: begin
                 p <= P;
                 q <= Q;
-                r <= 8'b00000011;
+                r <= 8'b00000000;
                 done <= 0;
                 if (start) s <= S1;
             end
